@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "wzh-button": "/components/image-button/index",
+    "wzh-preview": "/components/preview/index"
+  }
+}

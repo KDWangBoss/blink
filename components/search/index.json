@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "wzh-tag": "/components/tag/index",
+    "wzh-book": "/components/book/index",
+    "wzh-loading": "/components/loading/index"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "wzh-book": "/components/book/index",
+    "wzh-search": "/components/search/index"
+  }
+}

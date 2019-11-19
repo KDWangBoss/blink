@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "wzh-like": "/components/like/index",
+    "wzh-movie": "/components/classic/movie/index",
+    "wzh-music": "/components/classic/music/index",
+    "wzh-essay": "/components/classic/essay/index",
+    "wzh-epsoide": "/components/epsoide/index",
+    "wzh-nav": "/components/nav/index",
+    "wzh-button": "/components/image-button/index"
+  }
+}

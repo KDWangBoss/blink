@@ -1,0 +1,25 @@
+//对内容进行处理，过滤掉一些字段
+var filter = function(comments){
+   console.log('--1', comments);
+   for(var i = 0;i<comments.length;i++){
+      if (comments[i].content.indexOf('7月') != -1 || comments[i].content.indexOf('七月') != -1 || comments[i].content.indexOf('老师') != -1){
+         console.log('过滤掉的字段',comments[i].content);
+         comments.splice(i,1);
+      }
+   }
+}
+//限制显示多少条短评
+var limit = function(arr, length){
+   filter(arr);
+  return arr.slice(0, length);
+}
+//将内容简介里面的内容换行
+var format = function (text){
+  var reg = getRegExp('\\\\n', 'g');
+  return text.replace(reg, '\n' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+}
+
+module.exports = {
+  limit : limit,
+  format: format
+}

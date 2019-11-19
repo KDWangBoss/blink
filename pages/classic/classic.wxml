@@ -1,0 +1,16 @@
+<view class='container'>
+  <view class='header'>
+    <wzh-epsoide class="epsoide" index="{{classic.index}}"/>
+    <view class='like-container'>
+      <wzh-like class="like" like="{{likeStatus}}" count="{{likeCount}}" bind:like="onLike"/>
+      <wzh-button class='share-btn'class="share-btn" open-type="share">
+        <image class="share" slot="img" src="/images/icon/share.png"/>
+      </wzh-button>
+    </view>
+  </view>
+  <wzh-movie hidden="{{classic.type!=100}}" img="{{classic.image}}" content="{{classic.content}}"/>
+  <wzh-music wx-if="{{classic.type===200}}" img="{{classic.image}}" content="{{classic.content}}" src="{{classic.url}}" title="{{classic.title}}"/>
+  <wzh-essay hidden="{{classic.type!=300}}" img="{{classic.image}}" content="{{classic.content}}"/>
+  
+  <wzh-nav class="nav" title="{{classic.title}}" first="{{first}}" latest="{{latest}}" bind:left="onNext" bind:right="onPrevious"/>
+</view>

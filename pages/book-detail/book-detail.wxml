@@ -1,0 +1,75 @@
+<wxs src="../../utils/filter.wxs" module="util"/>
+
+<view class="container">
+  <view class="head">
+      <image src="{{book.image}}"></image>
+      <text class="title">{{book.title}}</text>
+      <text class="author">{{book.author}}</text>
+  </view>
+  <!--短评-->
+  <view class="sub-container">
+    <text class="headline">短评</text>
+    <text class="shadow" wx:if="{{!comments||comments&&comments.length===0}}">暂无短评</text>
+    <view class="comment-container">
+      <block wx:for="{{util.limit(comments,8)}}" wx:key="">
+        <wzh-tag text="{{item.content}}">
+          <text class='num'>{{'+'+item.nums}}</text>
+        </wzh-tag>
+      </block>
+    </view> 
+  </view>
+  <!--内容简介-->
+  <view class="sub-container">
+    <text class="headline">内容简介</text>
+    <text class="content" decode='true'>{{util.format(book.summary)}}</text>
+  </view>
+  <!--书本信息-->
+  <view class="sub-container">
+    <text class="headline">书本信息</text>
+    <view class='detail-container'>
+      <view class='vertical description'>
+        <text>出版社</text>
+        <text>出版年</text>
+        <text>页数</text>
+        <text>定价</text>
+        <text>装帧</text>
+      </view>
+      <view class='vertical'>
+        <text>{{book.publisher}}</text>
+        <text>{{book.pubdate}}</text>
+        <text>{{book.pages}}</text>
+        <text>{{book.price}}</text>
+        <text>{{book.binding}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!--输入短评-->
+<view class='post-container' wx:if="{{!posting}}">
+  <view class='post-fake' bind:tap="onFakePost">
+    <text>输入短评</text>
+  </view>
+  <view class='like-container'>
+    <wzh-like bind:like="onLike" class="like" like="{{likeStatus}}" count="{{likeCount}}"/>
+  </view>
+</view>
+
+<view class='posting-container' wx:if="{{posting}}">
+  <view class='posting-header'>
+    <text wx:if="{{comments&&comments.length>0}}">仅可点击标签+1</text>
+    <text wx:else>暂无评论</text>
+    <text class='cancel' bind:tap="onCancel">取消</text>
+  </view>
+  <view class="comment-container">
+    <block wx:for="{{util.limit(comments,3)}}" wx:key="">
+      <wzh-tag text="{{item.content}}" bind:tapping="onPost">
+        <text slot="after" class='num'>{{'+'+item.nums}}</text>
+      </wzh-tag>
+    </block>
+  </view>
+  <input class='posting' placeholder='短评最多12个字' bindconfirm="onPost"></input>
+</view>
+
+<!--引用遮罩层-->
+<wzh-mask wx:if="{{posting}}" />

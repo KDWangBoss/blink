@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "wzh-tag": "/components/tag/index",
+    "wzh-like": "/components/like/index"
+  }
+}
